@@ -3,15 +3,30 @@
 #include<stdlib.h>
 #include <unistd.h>
 using namespace std;
-
+string wav_filename;
+int getwav()
+{
+	//string wav_filename;
+	cout<<"please input filepath"<<endl;
+	cin>>wav_filename;
+	return 0;
+	
+}
 int main ()
 {	
 	size_t result;
 	char  *buf;
-	FILE *fp1=fopen("awake.wav","rb");
+	//string wav_filename;
+	//cout<<"please input filepath"<<endl;
+	//cin>>wav_filename;
+	//char* wavtemp=const_cast<char*>(wav_filename.c_str());
+	getwav();
+	FILE *fp1=fopen(wav_filename.c_str(),"rb");
 	FILE *fp2=fopen("awake.pcm","wb");
 	if(fp1==NULL||fp2==NULL)//判断两个文件指针是否存	
-			cout<<"file open filed!!"<<endl;
+			{cout<<"file open filed!!"<<endl;
+			cout<<"again"<<endl;
+			getwav();}
 		else
 			cout<<"wav文件打开成功，pcm文件创建成功"<<endl;
 	fseek(fp1,0,SEEK_END);//把fp1后移到文件的末尾
